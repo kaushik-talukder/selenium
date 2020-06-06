@@ -18,7 +18,7 @@ public class MyTestEx {
 
 		// Launch website
 		driver.navigate().to("https://www.testandquiz.com/selenium/testing.html");
-		
+
 		String sampleText = driver.findElement(By.className("col-md-12")).getText();
 
 		// click() method
@@ -62,9 +62,11 @@ public class MyTestEx {
 		if(isWindows(OS)) {
 			System.setProperty("webdriver.chrome.driver", "C:\\Users\\kaush\\CodeX\\Java\\chromedriver.exe");
 		} else if(isUnix(OS)) {
-			System.setProperty("webdriver.chrome.driver", "webdrivers/chromedriver");
+			System.setProperty("webdriver.chrome.driver", "webdrivers/unix/chromedriver");
+		} else if(isMac(OS)) {
+			System.setProperty("webdriver.chrome.driver", "webdrivers/mac/chromedriver");
 		} else {
-			// Add for others
+			//Other OS
 		}
 		driver = new ChromeDriver();
 	}
@@ -73,7 +75,7 @@ public class MyTestEx {
 	public void endCall() {
 		driver.close();
 	}
-	
+
 	public static boolean isWindows(final String OS) {
 
 		return (OS.indexOf("win") >= 0);
