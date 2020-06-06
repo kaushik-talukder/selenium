@@ -58,7 +58,14 @@ public class MyTestEx {
 
 	@BeforeClass
 	public void init() {
-		System.setProperty("webdriver.chrome.driver", "C:\\Users\\kaush\\CodeX\\Java\\chromedriver.exe");
+		String OS = System.getProperty("os.name").toLowerCase();
+		if(isWindows(OS)) {
+			System.setProperty("webdriver.chrome.driver", "C:\\Users\\kaush\\CodeX\\Java\\chromedriver.exe");
+		} else if(isUnix(OS)) {
+			System.setProperty("webdriver.chrome.driver", "webdrivers/chromedriver");
+		} else {
+			// Add for others
+		}
 		driver = new ChromeDriver();
 	}
 
@@ -66,4 +73,23 @@ public class MyTestEx {
 	public void endCall() {
 		driver.close();
 	}
+	
+	public static boolean isWindows(final String OS) {
+
+		return (OS.indexOf("win") >= 0);
+
+	}
+
+	public static boolean isMac(final String OS) {
+
+		return (OS.indexOf("mac") >= 0);
+
+	}
+
+	public static boolean isUnix(final String OS) {
+
+		return (OS.indexOf("nix") >= 0 || OS.indexOf("nux") >= 0 || OS.indexOf("aix") > 0 );
+
+	}
+
 }
