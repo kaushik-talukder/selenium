@@ -44,7 +44,8 @@ public class MyTestEx {
 		Select dropdown = new Select(driver.findElement(By.id("testingDropdown")));
 		dropdown.selectByVisibleText("Performance Testing");
 
-		Assert.assertEquals(sampleText, "This is sample webpage with dummy elements that will help you in learning selenium automation.");
+		Assert.assertEquals(sampleText,
+				"This is sample webpage with dummy elements that will help you in learning selenium automation.");
 
 	}
 
@@ -53,20 +54,20 @@ public class MyTestEx {
 		driver.navigate().to("https://www.testandquiz.com/selenium/testing.html");
 		// getText() method
 		String sampleText = driver.findElement(By.className("col-md-12")).getText();
-		Assert.assertEquals(sampleText, "This is sample webpage with dummy elements that will help you in learning selenium automation.");
+		Assert.assertEquals(sampleText,
+				"This is sample webpage with dummy elements that will help you in learning selenium automation.");
 	}
 
 	@BeforeClass
 	public void init() {
-		String OS = System.getProperty("os.name").toLowerCase();
-		if(isWindows(OS)) {
+		if (TestUtil.isWindows()) {
 			System.setProperty("webdriver.chrome.driver", "C:\\Users\\kaush\\CodeX\\Java\\chromedriver.exe");
-		} else if(isUnix(OS)) {
+		} else if (TestUtil.isUnix()) {
 			System.setProperty("webdriver.chrome.driver", "webdrivers/unix/chromedriver");
-		} else if(isMac(OS)) {
+		} else if (TestUtil.isMac()) {
 			System.setProperty("webdriver.chrome.driver", "webdrivers/mac/chromedriver");
 		} else {
-			//Other OS
+			// Other OS
 		}
 		driver = new ChromeDriver();
 	}
@@ -74,24 +75,6 @@ public class MyTestEx {
 	@AfterClass
 	public void endCall() {
 		driver.close();
-	}
-
-	public static boolean isWindows(final String OS) {
-
-		return (OS.indexOf("win") >= 0);
-
-	}
-
-	public static boolean isMac(final String OS) {
-
-		return (OS.indexOf("mac") >= 0);
-
-	}
-
-	public static boolean isUnix(final String OS) {
-
-		return (OS.indexOf("nix") >= 0 || OS.indexOf("nux") >= 0 || OS.indexOf("aix") > 0 );
-
 	}
 
 }
