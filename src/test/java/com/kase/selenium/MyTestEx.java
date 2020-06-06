@@ -74,7 +74,7 @@ public class MyTestEx {
 
 	@AfterClass
 	public void endCall() {
-		driver.close();
+		driver.quit();
 	}
 
 }
