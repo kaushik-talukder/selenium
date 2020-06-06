@@ -12,12 +12,13 @@ import org.testng.annotations.Test;
 public class MyTestEx {
 
 	private WebDriver driver;
+	private static final String URL_TO_TEST = "https://www.testandquiz.com/selenium/testing.html";
 
 	@Test(testName = "test11")
 	public void test1() {
 
 		// Launch website
-		driver.navigate().to("https://www.testandquiz.com/selenium/testing.html");
+		driver.navigate().to(URL_TO_TEST);
 
 		String sampleText = driver.findElement(By.className("col-md-12")).getText();
 
@@ -51,7 +52,7 @@ public class MyTestEx {
 
 	@Test(testName = "test22")
 	public void test2() {
-		driver.navigate().to("https://www.testandquiz.com/selenium/testing.html");
+		driver.navigate().to(URL_TO_TEST);
 		// getText() method
 		String sampleText = driver.findElement(By.className("col-md-12")).getText();
 		Assert.assertEquals(sampleText,
